@@ -5,13 +5,16 @@ class Television:
     MIN_CHANNEL = 0
     MAX_CHANNEL = 3
 
-    def __init__(self):
+    def __init__(self) -> None:
+        """
+        Method for defining default values to variables used in the below methods
+        """
         self.__status = False
         self.__muted = False
         self.__volume = 0
         self.__channel = 0
 
-    def power(self):
+    def power(self) -> None:
         """
         Sets the power status of the TV
         """
@@ -20,14 +23,17 @@ class Television:
         else:
             self.__status = True
 
-    def mute(self):
+    def mute(self) -> None:
         """
         Mutes the TV
         """
         if self.__status:
-            self.__muted = True
+            if not self.__muted:
+                self.__muted = True
+            elif self.__muted:
+                self.__muted = False
 
-    def channel_up(self):
+    def channel_up(self) -> None:
         """
         Increases the TV channel by 1
         """
@@ -37,7 +43,7 @@ class Television:
             else:
                 self.__channel = Television.MIN_CHANNEL
 
-    def channel_down(self):
+    def channel_down(self) -> None:
         """
         Decreases the TV channel by 1
         """
@@ -47,7 +53,7 @@ class Television:
             else:
                 self.__channel = Television.MAX_CHANNEL
 
-    def volume_up(self):
+    def volume_up(self) -> None:
         """
         Increases the TV volume by 1
         """
@@ -56,7 +62,7 @@ class Television:
             if self.__volume < Television.MAX_VOLUME:
                 self.__volume += 1
 
-    def volume_down(self):
+    def volume_down(self) -> None:
         """
         Decreases the TV volume by 1
         """
